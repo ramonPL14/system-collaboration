@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Submission</title>
+</head>
+<style>
+    label {
+        color: white;
+        font-size: 25px;
+        
+    }
+    h1 {
+        color: white;
+        margin-bottom: 50px;
+    }
+</style>
+<body style="background: grey; text-align: center;">
+    <h1>Student Submission System</h1>
+    <form action="index.php" method="post">
+        <label for="">Enter your first name:</label><br>
+        <input type="text" name="fname" id=""><br><br><br>
+        <label for="">Enter your last name:</label><br>
+        <input type="text" name="lname" id=""><br><br><br>
+        <label for="">Select a subject</label><br>
+        <select name="subject" id="">
+            <option value="">Select here</option>
+            <option value="Information Management">Information Managent</option>
+            <option value="Networking 1">Networking 1</option>
+            <option value="IPT 1">IPT 1</option>
+        </select>        <br><br><br>
+        <label for="">choose file:</label><br>
+        <input type="file" name="file" id=""><br><br><br><br>
+        <input style="background-color: #00ec00; width:100px; height:50px; font-size: 25px; color: #FFF"type="submit" value="submit">
+
+    </form>
+
+</body>
+</html>
