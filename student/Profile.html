@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <title>Profile</title>
+
+    <!-- Open Sans Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
+
+    <!-- Bootstrap Icons -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+      * {
+          margin: 0;
+          padding: 0
+      }
+
+      .card_profile {
+          width: 350px;
+          background-color: #c9cad1;
+          border: none;
+          cursor: pointer;
+          transition: all 0.5s;
+          padding: 2%;
+      }
+
+      .name {
+          font-size: 22px;
+          font-weight: bold
+      }
+
+      .idd {
+          font-size: 14px;
+          font-weight: 600
+      }
+
+      .idd1 {
+          font-size: 12px
+      }
+
+      .info {
+          font-size: 22px;
+          font-weight: bold
+      }
+      .info_basic{
+        font-size: 13px;
+
+      }
+
+      .text span {
+          font-size: 13px;
+          color: #545454;
+          font-weight: 500
+      }
+
+      .icons i {
+          font-size: 19px
+      }
+
+      hr .new1 {
+          border: 1px solid
+      }
+
+      .join {
+        position: relative;
+        left: 35%;
+          font-size: 14px;
+          color: #6e2222;
+          font-weight: bold
+      }
+
+      .date {
+          background-color: #ffffff
+      }
+    </style>
+  </head>
+  <body>
+    <div class="grid-container">
+
+      <!-- Header -->
+      <header class="header">
+        <div class="menu-icon" onclick="openSidebar()">
+          <span class="material-icons-outlined">menu</span>
+        </div>
+ 
+        <div class="header-right" style="position:relative; left: 90%;">
+          <span class="material-icons-outlined">notifications</span>
+          <span class="material-icons-outlined">email</span>
+          <span class="material-icons-outlined" ><a href="Profile.html" style="background-color: transparent; text-decoration: none;">account_circle</a></span>
+        </div>
+
+
+      </header>
+      <!-- End Header -->
+
+      <!-- Sidebar -->
+      <aside id="sidebar">
+        <div class="sidebar-title">
+          <div class="sidebar-brand">
+            <span class="material-icons-outlined">mood</span> LOGO
+          </div>
+          <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
+        </div>
+
+        <ul class="sidebar-list">
+          <li class="sidebar-list-item">
+            <a href="index.html">
+              <span class="material-icons-outlined">home</span> Home
+            </a>
+          </li>
+
+          <li class="sidebar-list-item">
+            <a href="#">
+              <span class="material-icons-outlined">account_box</span> Profile
+            </a>
+          </li>
+          <li class="sidebar-list-item">
+            <a href="choose.html">
+              <span class="material-icons-outlined">logout</span> Logout
+            </a>
+          </li>
+        </ul>
+      </aside>
+      <!-- End Sidebar -->
+
+      <!-- Main -->
+      <main class="main-container">
+        <div class="main-title">
+            <h2>PROFILE</h2>
+        </div>
+        <!--Profile- Student-->
+        <div class="container mt-4 mb-4 p-3 d-flex justify-content-center" style="position: relative; left: 30%;"> 
+          <div class="card_profile p-4"> <div class=" image d-flex flex-column justify-content-center align-items-center"> 
+            <button class="btn btn-secondary"> 
+              <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" /></button> 
+              <span class="name mt-3">Eleanor P. Pena</span> 
+          <div class="d-flex flex-row justify-content-center align-items-center gap-2"> 
+            <span class="idd1">Student</span> 
+            <span><i class="fa fa-copy"></i></span> 
+          </div> 
+          <div class="d-flex flex-row justify-content-center align-items-center mt-3"> 
+            <span class="info" style="color: rgb(180, 76, 35);"><br>Info</span> 
+              <span class="info_basic">
+                <h4>Name</h4>
+                <ul style="position: relative; left: 10%;">
+                  <li>First Name: Eleanor</li>
+                  <li>Middle Name: Plastic</li>
+                  <li>Last Name: Pena</li>
+                </ul>
+                </span>
+              
+              <span class="info_basic">
+                <h4><br>Basic</h4>
+                <ul style="position: relative; left: 10%;">
+                  <li>Student Number: 2101101111</li>
+                  <li>Department: College of Technologies</li>
+                  <li>Year Level: 2nd Year</li>
+                  <li>Address: Malaybalay City, Bukidnon</li>
+                </ul>
+                <br><br>
+              </span>
+          </div> 
+         
+          <div class=" px-2 rounded mt-4 date "> 
+            <span class="join">Class 2022-2023</span> 
+          </div> 
+        </div> 
+      </div>
+      </div>
+      <!-- End Main -->
+
+    </div>
+
+    <!-- Scripts -->
+    <!-- Custom JS -->
+    <script src="js/scripts.js"></script>
+  </body>
+</html>
