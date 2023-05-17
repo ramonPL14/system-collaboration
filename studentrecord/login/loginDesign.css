@@ -1,0 +1,40 @@
+#login .container #login-row #login-column #login-box {
+    margin-top: 30px;
+    max-width: 600px;
+    height: 320px;
+    border: 1px solid #9C9C9C;
+    background-color: #EAEAEA;
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+  }
+  #login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -65px;
+  }
+
+  .header {
+    overflow: hidden;
+    background-image: linear-gradient(blue,skyblue);
+    padding: 10px 5px;
+  }
+  
+  .header a {
+    float: left;
+    text-align: center;
+    padding: 6px;
+    text-decoration: none;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  
+  .header a.logo {
+      margin-top: 15px;
+      font-size: 30px;
+      font-weight: 700;
+  }
+
+  .header > .material-icon-outlined{
+    font-size: 10px;
+  }
+  
