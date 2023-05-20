@@ -10,6 +10,7 @@ if(!isset($_SESSION["loggedin"]) || $_SESSION["loggedin"] !== true){
 //calls data from these two attributes
 $name = $_SESSION["name"] ;
 $role = $_SESSION["role"] ;
+$id = $_SESSION["id"];
 
 ?>
 
@@ -39,7 +40,7 @@ $role = $_SESSION["role"] ;
       }
 
       .card_profile {
-          width: 350px;
+          width: 590px;
           background-color: #c9cad1;
           border: none;
           cursor: pointer;
@@ -48,21 +49,22 @@ $role = $_SESSION["role"] ;
       }
 
       .name {
-          font-size: 23px;
-          font-weight: bold
+          font-size: 27px;
+          font-weight: bold;
+          text-align: center;
       }
 
       .idd {
-          font-size: 14px;
+          font-size: 18px;
           font-weight: 600
       }
 
       .idd1 {
-          font-size: 20px
+          font-size: 22px
       }
 
       .info {
-          font-size: 22px;
+          font-size: 18px;
           font-weight: bold
       }
       .info_basic{
@@ -86,10 +88,11 @@ $role = $_SESSION["role"] ;
 
       .join {
         position: relative;
-        left: 35%;
-          font-size: 14px;
-          color: #6e2222;
-          font-weight: bold
+        margin-left: auto;
+        margin-right: auto;
+        font-size: 14px;
+        color: #6e2222;
+        font-weight: bold
       }
 
       .date {
@@ -125,7 +128,7 @@ $role = $_SESSION["role"] ;
       <aside id="sidebar">
         <div class="sidebar-title">
           <div class="sidebar-brand">
-          <a href="#default" class="logo"><img src= "../img/buksuLogo.png" width = "90" height = "90"></a> BukSU
+          <a href="#default" class="logo"><img src= "../img/buksuLogo.png" width = "90" height = "90"></a> <br>BukSU
           </div>
           <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
         </div>
@@ -162,26 +165,58 @@ $role = $_SESSION["role"] ;
       <main class="main-container">
         <div class="main-title">
             <h2>PROFILE</h2>
-        </div>
-        <!--Profile- Student-->
-        <div class="container mt-4 mb-4 p-3 d-flex justify-content-center" style="position: relative; left: 30%;"> 
-          <div class="card_profile p-4"> <div class=" image d-flex flex-column justify-content-center align-items-center"> 
-            <button class="btn btn-secondary"> 
-              <img src="https://i.imgur.com/wvxPV9S.png" height="100" width="100" /></button> 
-              <!--changes name assigned from the username logged in-->
-              <span class="name mt-3"><?php echo $name; ?></span> 
-          <div class="d-flex flex-row justify-content-center align-items-center gap-2">
-            <!--changes names of role to the username who logged in--> 
-            <span class="idd1"><?php echo $role; ?></span> 
-            <span><i class="fa fa-copy"></i></span> 
-          </div> 
-         
-          <div class=" px-2 rounded mt-4 date "> 
-            <span class="join">Class 2022-2023</span> 
-          </div> 
-        </div> 
-      </div>
-      </div>
+          </div>
+          <?php
+              if($role == 'Student'){
+               //<!--Profile- Student-->
+                echo '
+                <div class="container mt-4 mb-4 p-3 d-flex justify-content-center" style="position: relative; left: 14%; text-align: center;"> 
+                  <div class="card_profile p-4"> <div class=" image d-flex flex-column justify-content-center align-items-center">  
+                      <img src="../img/pfpStud.png" height="150" width="150" style="display: block; margin-left: auto; margin-right: auto;"/>
+                      <!--changes name assigned from the username logged in-->
+                      <h3 class="name mt-3">&nbsp; &nbsp;' . $name . '</h3>
+                  <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                    <!--changes names of role to the username who logged in--> 
+                    <span class="idd1">' . $role . '</span> <br> <br>
+                    <span class="idd">ID Number:<br>' . $id . '</span><br>
+                    <p class="idd">&nbsp;<br>Studied in: <br>Bukidnon State University - <br>Secondary School Laboratory</p>
+                    
+                    <span><i class="fa fa-copy"></i></span> 
+                  </div> 
+                 
+                  <div class=" px-2 rounded mt-4 date "> 
+                    <span class="join">Class 2022-2023</span> 
+                  </div> 
+                </div> 
+              </div>
+              </div>';
+              }
+              else{
+               //<!--Profile- Instructor-->
+                echo '
+                <div class="container mt-4 mb-4 p-3 d-flex justify-content-center" style="position: relative; left: 14%; text-align: center;"> 
+                  <div class="card_profile p-4"> <div class=" image d-flex flex-column justify-content-center align-items-center">  
+                      <img src="../img/pfpInst.png" height="150" width="150" style="display: block; margin-left: auto; margin-right: auto;"/>
+                      <!--changes name assigned from the username logged in-->
+                      <h3 class="name mt-3">&nbsp; &nbsp;' . $name . '</h3> 
+                  <div class="d-flex flex-row justify-content-center align-items-center gap-2">
+                    <!--changes names of role to the username who logged in--> 
+                    <span class="idd1">' . $role . '</span>
+                    <span class="idd"><br><br>ID Number:<br>' . $id . '</span>
+                    <p class="idd"> &nbsp;<br>Teached in: <br>Bukidnon State University - <br>Secondary School Laboratory</p>
+                    <span><i class="fa fa-copy"></i></span> 
+                  </div> 
+                 
+                  <div class=" px-2 rounded mt-4 date "> 
+                    <span class="join">Class 2022-2023</span> 
+                  </div> 
+                </div> 
+              </div>
+              </div>';
+              }
+            echo '</a>';
+            ?>
+
       <!-- End Main -->
 
     </div>

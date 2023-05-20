@@ -121,14 +121,53 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     background-size: 100% 100%;
   }
 
+  #login .container #login-row #login-column #login-box {
+    margin-top: 30px;
+    max-width: 600px;
+    height: 320px;
+    border: 1px solid #9C9C9C;
+    background-color: #EAEAEA;
+  }
+  #login .container #login-row #login-column #login-box #login-form {
+    padding: 20px;
+
+  }
+  #login .container #login-row #login-column #login-box #login-form #register-link {
+    margin-top: -65px;
+  }
+
+  .header {
+    overflow: hidden;
+    background-image: linear-gradient(blue,skyblue);
+    padding: 10px 5px;
+  }
+  
+  .header a {
+    float: left;
+    text-align: center;
+    padding: 6px;
+    text-decoration: none;
+    font-size: 18px; 
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  
+  .header a.logo {
+      margin-top: 5px;
+      font-size: 30px;
+      font-weight: 700;
+      color: white;
+  }
+
+  .header > .material-icon-outlined{
+    font-size: 10px;
+  }
+  
 </style>
 <body>
     <!-- Header -->
 <header class="header">
 <a href="#default" class="logo"><img src= "../img/buksuLogo.png" width = "50" height = "50">  Bukidnon State University</a>
-  <div class="header-right" style="position:relative; left: 90%;">
-    <span class="material-icons-outlined"><a href="../profile/Profile.php" style="background-color: transparent; text-decoration: none;">account_circle</a></span>
-  </div>
 </header>
 <!-- End Header -->
 

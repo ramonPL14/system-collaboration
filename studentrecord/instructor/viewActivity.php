@@ -56,17 +56,6 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
     <meta charset="UTF-8">
     <title>View Record</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-     <!-- Open Sans Font -->
-     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet">
-
-    <!-- Bootstrap Icons -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/styles.css">
     <style>
         .wrapper{
             width: 600px;
@@ -76,22 +65,17 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
             background-color:#D0D8F3;
             margin-top: 14%;
         }
+
         body{
-        background-image: url('../img/buksu.jpg');
-        background-repeat: no-repeat;
-        background-attachment: fixed;
-        background-size: 100% 100%;
+            background-image: url('../img/buksu.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: 100% 100%;
         }
     </style>
 </head>
 <body>
-<div class="grid-container">
-<!-- Main -->
-<main class="main-container">
-  <div>
-      <h2>VIEW ACTIVITY</h2>
-
-      <div class="wrapper">
+    <div class="wrapper">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
@@ -113,13 +97,5 @@ if(isset($_GET["id"]) && !empty(trim($_GET["id"]))){
             </div>        
         </div>
     </div>
-  </div>
-      </div>
-    </div> 
-  </div> 
-</div>
-</div>
-</main>
-
 </body>
 </html>

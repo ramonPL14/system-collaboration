@@ -29,9 +29,10 @@
   }
   
   .header a.logo {
-      margin-top: 15px;
+      margin-top: 5px;
       font-size: 30px;
       font-weight: 700;
+      color: white;
   }
 
   .header > .material-icon-outlined{

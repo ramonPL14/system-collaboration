@@ -183,45 +183,42 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
  <!-- Header -->
-<header class="header">
-<a href="#default" class="logo"><span class="material-icons-outlined">send</span> SENT</a>
-  <div class="header-right" style="position:relative; left: 90%;">
-    <span class="material-icons-outlined"><a href="../profile/Profile.php" style="background-color: transparent; text-decoration: none;">account_circle</a></span>
-  </div>
+<header class="header" style="color: white;">
+<a href="#default" class="logo"><img src= "../img/buksuLogo.png" width = "50" height = "50">  Bukidnon State University</a>
 </header>
 <!-- End Header -->
 
     <div id="register">
         <div class="container">
             <div id="login-row" class="row justify-content-center align-items-center">
-                <div id="login-column" class="col-md-6">
+                <div id="login-column" class="col-md-6" style="background-color:white; margin-top: 30px">
                     <div id="login-box" class="col-md-12">
                         <form id="login-form" class="form" action="login.php" method="post">
-                           <h2 style ="color: rgb(29, 38, 154); margin-top: 12px; text-align: center; color:white; ">Sign Up</h2>
-                            <p style ="color: rgb(29, 38, 154); text-align: center; color:white;">Please fill this form to create an account.</p>
+                           <h2 style ="color: rgb(29, 38, 154); margin-top: 12px; text-align: center;">Sign Up</h2>
+                            <p style ="color: rgb(29, 38, 154); text-align: center;">Please fill this form to create an account.</p>
                                 <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post">
                                     <div class="form-group">
-                                        <label style="color:white;">Username</label>
+                                        <label style="color: gray;">Username</label>
                                         <input type="text" name="username" class="form-control <?php echo (!empty($username_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $username; ?>">
                                         <span class="invalid-feedback"><?php echo $username_err; ?></span>
                                     </div>  
                                     <div class="form-group">
-                                        <label style="color:white;">Password</label>
+                                        <label style="color: gray;">Password</label>
                                         <input type="password" name="password" class="form-control <?php echo (!empty($password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $password; ?>">
                                         <span class="invalid-feedback"><?php echo $password_err; ?></span>
                                     </div>
                                     <div class="form-group">
-                                        <label style="color:white;">Confirm Password</label>
+                                        <label style="color: gray;">Confirm Password</label>
                                         <input type="password" name="confirm_password" class="form-control <?php echo (!empty($confirm_password_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $confirm_password; ?>">
                                         <span class="invalid-feedback"><?php echo $confirm_password_err; ?></span>
                                     </div>
                                     <div class="form-group">                                                            
-                                        <label>Name</label>
+                                        <label style="color: gray;">Name</label>
                                         <input type="text" name="name" class="form-control <?php echo (!empty($name_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $name; ?>">
                                         <span class="invalid-feedback"><?php echo $name_err; ?></span>      
                                     </div>    
                                     <div class="form-group">                                                            
-                                        <label style="color:white;">Role</label>
+                                        <label style="color: gray;">Role</label>
                                         <select name="role" class="form-control <?php echo (!empty($role_err)) ? 'is-invalid' : ''; ?>" value="<?php echo $role; ?>">
                                             <option value="Student">Student</option>
                                             <option value="Instructor">Instructor</option>
@@ -234,7 +231,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                        <center> <input type="submit" class="btn btn-primary" value="Submit">
                                         <input type="reset" class="btn btn-secondary ml-2" value="Reset">
                                     </div>
-                                    <center><p style="margin-top:12px">Already have an account? <a href="login.php">Login here</a>.</p>
+                                    <center><p style="margin-top:12px;">Already have an account? <a href="login.php">Login here</a>.</p>
 
                         </form>
                     </div>

@@ -63,7 +63,7 @@
     }
 
     #back-btn {
-      display: block;
+      display: inline-block;
       background-color: #9668CA;
       border-radius: 8px;
       text-align: center;
@@ -87,7 +87,7 @@
       margin-bottom: 5px;
       text-decoration: none;
     }
-  table, td{
+  table, td, th{
     border: 2px solid #c9cad1;
     padding: 12px;
     background-color: #c9cad1;
@@ -100,13 +100,9 @@
   td,th{
     background-color: white;
   }
-
-body{
-  background-image: url('../img/buksu.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-}
+  body{
+    background-color: #c9cad1;
+  } 
 </style>
 </head>
 <body>
@@ -128,7 +124,7 @@ body{
 <aside id="sidebar">
   <div class="sidebar-title">
     <div class="sidebar-brand">
-    <a href="#default" class="logo"><img src= "../img/buksuLogo.png" width = "90" height = "90"></a> BukSU
+    <a href="#default" class="logo"><img src= "../img/buksuLogo.png" width = "90" height = "90"></a> <br>BukSU
     </div>
     <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
   </div>
@@ -158,13 +154,22 @@ body{
 <!-- Main -->
 <main class="main-container">
   <div>
-      <h2>Students Who Submitted For Activity <?php echo $selectedActivityId ?></h2>
+    <?php
+      $queryActivityName = "SELECT * FROM activity where activity_id=" . $selectedActivityId;
+      if($resultName = mysqli_query($link, $queryActivityName)){
+        if(mysqli_num_rows($resultName) > 0){
+          $row1 = mysqli_fetch_array($resultName); 
+            echo "<h2>Students Who Submitted For " .  $row1['activity_title'] . "</h2>";
+
+          mysqli_free_result($resultName);
+        }
+      }
+      ?>
         <div class="wrapper">
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-7">
                         <?php
-                        echo $selectedActivityId;
                         // Attempt select query execution
                         $sql = "SELECT * FROM submission where activity_id=" . $selectedActivityId .
                         " AND student_id IS NOT NULL";
@@ -176,9 +181,10 @@ body{
                                         echo "<tr>";
                                             echo "<th style='display: none;'>#</th>";
                                             echo "<th style='display: none;'>Student ID</th>";
-                                            echo "<th>Student STUDENT ID</th>";
+                                            echo "<th>Student Name</th>";
                                             echo "<th>File</th>";
                                             echo "<th>Grade</th>";
+                                            echo "<th>Action</th>";
                                         echo "</tr>";
                                     echo "</thead>";
                                     echo "<tbody>";
@@ -186,10 +192,20 @@ body{
                                         echo "<tr>";
                                             echo "<td style='display:none;'>" . $row['submission_id'] . "</td>";
                                             echo "<td style='display:none;'>" . $row['student_id'] . "</td>";
-                                            echo "<td>" . $row['student_id'] . "</td>";
+
+                                            $selectedUserId = "dhgfhf";
+                                            $selectedUserId = $row["student_id"];
+                                            $queryStudentName = "SELECT * FROM users where id=" . $selectedUserId;
+                                            if($resultStudName = mysqli_query($link, $queryStudentName)){
+                                              if(mysqli_num_rows($resultStudName) > 0){
+                                                $row2 = mysqli_fetch_array($resultStudName); 
+                                                  echo "<td>" . $row2['name'] . "</td>";
+                                              }
+                                            }
+
                                             echo "<td><a href='../download.php?id=" .  $row['activity_id'] . "' target='_blank' id='download-btn'"
                                                         . "Download". "</a>Download File</td>";                                       
-                                            echo "<td>" . $row['grade'] . "</td>";  
+                                            echo "<td style='text-align: center;'>" . $row['grade'] . "</td>";  
                                             echo "<td>";
                                               echo '<a href="submitGrade.php?submission_id='. $row['submission_id'] .'" 
                                                   class="mr-3" title="Submit Grade" data-toggle="tooltip" id="submit-btn">
@@ -213,7 +229,7 @@ body{
                         mysqli_close($link);
                         ?>
                     </div>
-                    <a href="activityTable.php" class="btn btn-secondary ml-2" id="back-btn">Back</a>
+                    <a href="activityTable.php" id="back-btn">Back</a>
                 </div>        
             </div>
         </div>

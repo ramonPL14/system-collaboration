@@ -1,3 +1,29 @@
+<?php
+  session_start();
+
+  require_once "../config.php";
+
+  if($_SERVER["REQUEST_METHOD"] == "POST"){
+  //   if (array_key_exists('first', $search_array)) {
+  //     echo "The 'first' element is in the array";
+  // }
+    if(isset($_POST["disableActivityId"])){
+      $input_title = trim($_POST["disableActivityId"]);
+
+      $sqlDisable = "UPDATE `activity` SET `activity_is_disabled` = false WHERE activity_id = $input_title";
+      $disable = mysqli_query($link, $sqlDisable);
+
+    }
+    elseif(isset($_POST["enableActivityId"])){
+        $input_title = trim($_POST["enableActivityId"]);
+  
+        $sqlDisable = "UPDATE `activity` SET `activity_is_disabled` = true WHERE activity_id = $input_title";
+        $disable = mysqli_query($link, $sqlDisable);
+  
+      }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,7 +47,7 @@
       }
 
     #add-btn{
-      display:inline-block;
+      display: inline-block;
       cursor: pointer;
       border-radius: 1px;
       font-size: 19px;
@@ -35,6 +61,7 @@
       }
 
     #add-btn:hover{
+      ddisplay: inline-block;
       background-color: #1e81b0;
       border-radius: 8px;
       text-decoration: none;
@@ -45,7 +72,6 @@
 
     #view-btn {
       display: block;
-      width: 100%;
       background-color: #129fdb;
       border-radius: 8px;
       text-align: center;
@@ -57,8 +83,8 @@
     }
 
     #view-btn:hover{
+      display: block;
       background-color: #1e81b0;
-      width: 100%;
       border-radius: 8px;
       text-decoration: none;
       font-size: 14px;
@@ -79,8 +105,8 @@
     }
 
     #edit-btn:hover{
+      display: block;
       background-color: #15bd18;
-      width: 100%;
       border-radius: 8px;
       text-decoration: none;
       font-size: 14px;
@@ -101,8 +127,8 @@
     }
 
     #delete-btn:hover{
+      display: block;
       background-color: #b50928;
-      width: 100%;
       border-radius: 8px;
       text-decoration: none;
       font-size: 14px;
@@ -122,9 +148,9 @@
       margin-bottom: 5px;
     }
 
-    #view-btn:hover{
+    #view-sub-btn:hover{
+      display: block;
       background-color: #8042c7;
-      width: 100%;
       border-radius: 8px;
       text-decoration: none;
       font-size: 14px;
@@ -132,30 +158,81 @@
       margin-bottom: 5px;
     }
 
+    #enable-btn{
+      display: block;
+      width: 100%;
+      background-color: #d4a628;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 14px;
+      color: white;
+      padding: 4%;
+      margin-bottom: 5px;
+    }
 
-    table, td{
+    #enable-btn: :hover{
+      display: block;
+      background-color: #c7801e;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      color:white;
+      margin-bottom: 5px;
+    }
+
+    #disable-btn{
+      display: block;
+      width: 100%;
+      background-color: #36270b;
+      border-radius: 8px;
+      text-align: center;
+      text-decoration: none;
+      font-size: 14px;
+      color: white;
+      padding: 4%;
+      margin-bottom: 5px;
+    }
+
+    #disable-btn: :hover{
+      display: block;
+      background-color: #54431d;
+      border-radius: 8px;
+      text-decoration: none;
+      font-size: 14px;
+      color:white;
+      margin-bottom: 5px;
+    }
+
+    table{
     border: 2px solid #c9cad1;
     background-color: #c9cad1;
     padding: 12px;
-  }
-
-  table{
-    width:100%;
-  }
-
-  td,th{
-    background-color: white;
-  }
-  #column{
-    color: white;
     }
 
-  body{
-    background-image: url('../img/buksu.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-size: 100% 100%;
-  }
+    table{
+      width:100%;
+    }
+
+    td,th{
+      background-color: white;
+      border: 2px solid #c9cad1;
+    }
+
+    tr{
+      border-color: white;
+    } 
+
+    th{
+      background-color: #595eeb;
+    }
+
+    body{
+      background-image: url('../img/buksu.jpg');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: 100% 100%;
+    }
   </style>
 </head>
 <body>
@@ -177,7 +254,7 @@
 <aside id="sidebar">
 <div class="sidebar-title">
   <div class="sidebar-brand">
-  <a href="#default" class="logo"><img src= "../img/buksuLogo.png" width = "90" height = "90"></a> BukSU
+  <a href="#default" class="logo"><img src= "../img/buksuLogo.png" width = "90" height = "90"></a><br>BukSU
   </div>
   <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
 </div>
@@ -227,7 +304,7 @@
                               echo '<table class="table table-bordered table-striped">';
                                   echo "<thead>";
                                       echo "<tr>";
-                                          //echo "<th id='column'>#</th>";
+                                          //echo "<th>#</th>";
                                           echo "<th>Title</th>";
                                           echo "<th>Description</th>";
                                           echo "<th>Action</th>";
@@ -238,7 +315,7 @@
                                   while($row = mysqli_fetch_array($result)){
                                       echo "<tr>";
                                           //echo "<td>" . $row['activity_id'] . "</td>";
-                                          echo "<td>" . $row['activity_title'] . "</td>";
+                                          echo "<td style='text-align: center;'>" . $row['activity_title'] . "</td>";
                                           echo "<td>" . $row['activity_description'] . "</td>";
                                           echo "<td>";
                                           //buttons toggle in all CRUD methods
@@ -254,7 +331,20 @@
                                                   title="Delete Activity" data-toggle="tooltip" id="delete-btn">
                                                   <span class="fa fa-trash">Delete Activity</span>
                                                 </a>';
-                                                echo '<a href="viewStudentSubmissions.php?id='. $row['activity_id'] .'" 
+
+                                                if($row['activity_is_disabled'] == 0){
+                                                  echo "<form action= '' method='POST' enctype='multipart/form-data'>";
+                                                  echo "<input type='hidden' name='enableActivityId' value='" . $row['activity_id'] . "'/>";
+                                                  echo "<input type='submit' id='disable-btn' value='Disable Activity'></input>";
+                                                  echo "</form>";
+                                                }
+                                                else{
+                                                  echo "<form action= '' method='POST' enctype='multipart/form-data'>";
+                                                  echo "<input type='hidden' name='disableActivityId' value='" . $row['activity_id'] . "'/ \>";
+                                                  echo "<input type='submit' id='enable-btn' value='Enable Activity'></input>";
+                                                  echo "</form>";
+                                                }
+                                               echo '<a href="viewStudentSubmissions.php?id='. $row['activity_id'] .'" 
                                                   title="View Submission" data-toggle="tooltip" id="view-sub-btn">
                                                   <span class="fa fa-trash">View Submissions</span>
                                                 </a>';

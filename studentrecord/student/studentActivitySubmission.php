@@ -60,44 +60,28 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
   * {
       box-sizing: border-box;
     }
-  .submit-button{
-    display: block;
-    cursor: pointer;
-    outline: none;
-    border: none;
-    background-color: var(--light);
-    width: 200px;
-    height: 50px;
-    border-radius: 1px;
-    font-size: 1.4rem;
-    font-weight: 600;
-    color: var(--text);
-    background-size: 80% 80%;
-    box-shadow: 0 0 0 7px var(--light) inset;
-    margin-bottom: 2px;
-    color: aliceblue;
-    }
-
-  .submit-btn {
-    display: block;
-    width: 200px;
-    margin: 0 auto 0 auto;
-    background-color: blue;
-    border-radius: 8px;
-  }
-
-
-  table, td{
-    border: 2px solid #c9cad1;
-    padding: 12px;
-  }
 
   table{
+    border: transparent;
+    padding: 12px;
     width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 15px;
   }
 
   td,th{
     background-color: white;
+  }
+
+  th{
+    text-align: center;
+    background-color: #595eeb;
+    border: 2px solid white;
+  }
+
+  tr, td{
+    border: 2px solid #595eeb;
+    border-radius: 5px;
   }
 
   input[type=submit]{
@@ -118,15 +102,25 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     display: none;
   }
 
-  body{
-  background-image: url('../img/buksu.jpg');
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-size: 100% 100%;
-}
+  h2 {display: block;
+    font-size: 1.5em;
+    margin-block-start: 0.83em;
+    margin-block-end: 0.83em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+  }
+
+  body {
+    background-image: url('../img/buksu.jpg');
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
+  }
 
 </style>
 </head>
+
 <body>
 <div class="grid-container">
 
@@ -146,7 +140,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 <aside id="sidebar">
   <div class="sidebar-title">
     <div class="sidebar-brand">
-    <a href="#default" class="logo"><img src= "../img/buksuLogo.png" width = "90" height = "90"></a> BukSU
+    <a href="#default" class="logo"><img src= "../img/buksuLogo.png" width = "90" height = "90"></a><br>BukSU
     </div>
     <span class="material-icons-outlined" onclick="closeSidebar()">close</span>
   </div>
@@ -175,32 +169,33 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 
 <!-- Main -->
 <main class="main-container">
-  <div>
-      <h2>ACTIVITY</h2>
+    <div>
+    <h2>ACTIVITY</h2>
         <div class="wrapper">
             <div class="container-fluid">
-                <div class="row"><br><br><br>
-                    <div class="col-md-7">
+                <div class="row">
+                    <div class="col-md-12">
                         <?php
                         // Attempt select query execution
                         $sql = "SELECT * FROM activity";
                         if($result = mysqli_query($link, $sql)){
                             if(mysqli_num_rows($result) > 0){
                                 //table of Student Activity Submission
-                                echo '<table class="table table-bordered table-striped">';
+                                echo '<table class="table table-striped">';
                                     echo "<thead>";
                                         echo "<tr>";
-                                            //echo "<th class="thead-light">#</th>";
-                                            echo "<th scope='col'>Activity Title</th>";
-                                            echo "<th scope='col'>Description</th>";
-                                            echo "<th scope='col'>File</th>";
+                                            //echo "<th>#</th>";
+                                            echo "<th>Activity Title</th>";
+                                            echo "<th>Description</th>";
+                                            echo "<th>File</th>";
+                                            echo "<th>Action</th>";
                                         echo "</tr>";
                                     echo "</thead>";
                                     echo "<tbody>";
                                     while($row = mysqli_fetch_array($result)){
                                         echo "<tr>";
                                             //echo "<td>" . $row['activity_id'] . "</td>";
-                                            echo "<td>" . $row['activity_title'] . "</td>";
+                                            echo "<td style='text-align:center; '>" . $row['activity_title'] . "</td>";
                                             echo "<td>" . $row['activity_description'] . "</td>";
                                             //para maguwas ang table for submission 
                                             //gets submission related to student
@@ -230,7 +225,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
                                             }    
                                             echo "<td>";
 
-                                            if($studentSubmissionFileRows == null){
+                                            if($studentSubmissionFileRows == null && $row['activity_is_disabled'] == false){
                                                 echo "<form action= '' method='POST' enctype='multipart/form-data'>";
                                                 echo "<input type='text' name='activityId' value='" . $row['activity_id'] . "'/>";
                                                 echo "<input type='file' name='studentFile' />";

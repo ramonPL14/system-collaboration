@@ -11,7 +11,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     $input_title = trim($_POST["title"]);
     if(empty($input_title)){
         $title_err = "Please enter a title.";
-    } elseif(!filter_var($input_title, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z\s]+$/")))){
+    } elseif(!filter_var($input_title, FILTER_VALIDATE_REGEXP, array("options"=>array("regexp"=>"/^[a-zA-Z0-9\s]+$/")))){
         $title_err = "Please enter a valid title.";
     } else{
         $title = $input_title;
